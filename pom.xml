@@ -8,12 +8,13 @@
     <packaging>jar</packaging>
 
     <name>rFileGenerator</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/krinkere/rFileGenerator</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.accumulo>1.5.0</version.accumulo>
-        <hadoop.version>0.20.2</hadoop.version>
+        <version.accumulo>1.4.2</version.accumulo>
+        <!-- 0.20.203.0 version is needed since 0.20 version had bugs writing files on HDFS-->
+        <hadoop.version>0.20.203.0</hadoop.version>
     </properties>
 
     <dependencies>
@@ -32,21 +33,32 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
             <version>${hadoop.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-codec</artifactId>
+                    <groupId>commons-codec</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
-              <dependency>
-	<groupId>org.apache.hadoop</groupId>
-	<artifactId>hadoop-common</artifactId>
-	<version>0.22.0</version>
-</dependency>
-<dependency>
-	<groupId>commons-configuration</groupId>
-	<artifactId>commons-configuration</artifactId>
-	<version>1.6</version>
-</dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>0.22.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.6</version>
+        </dependency>
     </dependencies>
 </project>
